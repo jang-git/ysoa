@@ -6,6 +6,7 @@ import { ArchivesComponent } from './archives.component';
 import { InitiateGrassComponent } from './initiate-grass/initiate-grass.component';
 import { InitiateGrassAddComponent } from './initiate-grass/initiate-grass-add.component';
 import { ReceivingRegistrationComponent } from './receiving-registration/receiving-registration.component';
+import { ReceivingRegistrationAddComponent } from './receiving-registration/receiving-registration-add.component';
 
 import { DocumentProcessingComponent } from './document-processing/document-processing.component';
 import { DocumentManagementComponent } from './document-management/document-management.component';
@@ -32,7 +33,8 @@ const archivesRoutes = [
 			// { path:'**', redirectTo:'chat' }
 		]
 	},
-	{	path: 'initiate-grass-add', component: InitiateGrassAddComponent }
+	{	path: 'initiate-grass-add', component: InitiateGrassAddComponent },
+	{	path: 'receiving-registration-add', component: ReceivingRegistrationAddComponent }
 ];
 @NgModule({
 	declarations: [
@@ -40,6 +42,7 @@ const archivesRoutes = [
 		InitiateGrassComponent,
 		InitiateGrassAddComponent,
 		ReceivingRegistrationComponent,
+		ReceivingRegistrationAddComponent,
 		DocumentProcessingComponent,
 		DocumentManagementComponent,
 		QueryStatisticsComponent,
