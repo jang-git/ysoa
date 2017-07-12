@@ -1,0 +1,212 @@
+<!-- content -->
+    <div id="content" class="app-content">
+        <div class="app-content-body app-content-full fade-in-up ng-scope h-full">
+            <div class="hbox hbox-auto-xs">
+                <!-- left col -->
+                <div class="col w-lg lt b-r">
+                    <div class="vbox">
+
+                        <div class="padder b-b pc-50">
+                            <ul class="tongxunlu-tabs">
+                                <li>
+                                    <a routerLink="/contacts/list">全部</a>
+                                </li>
+                                <li class="active">
+                                    <a routerLink="/contacts/group">分组</a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <div class="bg-light lt wrapper">
+                            <div class="module-search">
+                                <div class="module-search-input-area">
+                                    <input type="text" class="module-search-input" placeholder="请输入关键词">
+                                    <span class="module-search-icon-search fa fa-search"></span>
+                                </div>
+                                <span class="icon icon-close module-search-icon-clear hidden"></span>
+                            </div>
+                        </div>
+                        <div class="row-row">
+                            <div class="cell scrollable">
+                                <div class="cell-inner">
+                                        
+                                        <object-view class="categroy-tree" [object]="object" (change)="countChange($event)"></object-view>
+                                        <!--分组树形结构-->
+                                        <!--<div class="categroy-tree">
+                                            <ul>
+                                                <li><a href="#" ref="hyjm">
+                                                    <span class="tongxunlu-label pull-right">产品产品经理</span>
+                                                    <span class="tongxunlu-avatar">AN</span>
+                                                    <span class="tongxunlu-name">安娜</span>
+                                                </a></li>
+                                                <li class="folder open"> <span class="toggler"></span> <a href="#" ref="xtgl">分组1</a></li>
+                                                <ul show="">
+                                                    <li><a href="#" ref="yhgl"><span class="tongxunlu-label pull-right">产品产品经理</span>
+                                                        <span class="tongxunlu-avatar">AN</span>
+                                                        <span class="tongxunlu-name">安娜</span></a>
+                                                    </li>
+                                                    <li class="folder"><span class="toggler"></span><a href="#" ref="rzck">分组1-1</a></li>
+                                                    <ul>
+                                                        <li>
+                                                            <a>
+                                                                <span class="tongxunlu-label pull-right">产品产品经理</span>
+                                                                <span class="tongxunlu-avatar">AN</span>
+                                                                <span class="tongxunlu-name">安娜</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a>
+                                                                <span class="tongxunlu-label pull-right">产品产品经理</span>
+                                                                <span class="tongxunlu-avatar">AN</span>
+                                                                <span class="tongxunlu-name">安娜</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                    <li class="folder"><span class="toggler"></span><a href="#" ref="rzck">分组1-2</a></li>
+                                                    <ul show="">
+                                                        <li>
+                                                            <a>
+                                                                <span class="tongxunlu-label pull-right">产品产品经理</span>
+                                                                <span class="tongxunlu-avatar">AN</span>
+                                                                <span class="tongxunlu-name">安娜</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a>
+                                                                <span class="tongxunlu-label pull-right">产品产品经理</span>
+                                                                <span class="tongxunlu-avatar">AN</span>
+                                                                <span class="tongxunlu-name">安娜</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </ul>
+
+                                            </ul>
+                                        </div>-->
+                                        <!--/分组树形结构-->
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- / left col -->
+                <!-- main -->
+                <div class="col">
+                    <div class="vbox">
+                        <div class="row-row">
+                            <div class="cell bg-light lt b-b">
+                                <div class="cell-inner">
+                                    <div *ngIf="selectedContacts" class="panel no-radius no-border no-shadow no-bg wrapper">
+                                        <div class="panel-heading no-border wrapper-lg">
+                                            <!--<button class="btn btn-sm btn-icon btn-rounded pull-right m-r"><i class="fa fa-heart"></i></button>-->
+                                        </div>
+                                        <div class="text-center m-b clearfix">
+                                            <div class="thumb-lg avatar">
+                                                <img src="assets/images/avatar.png" alt="..." class="b b-3x b-white">
+                                                <div class="h4 m-t">{{selectedContacts.membername}}</div>
+                                                <div class="h5 font-thin m-t-sm">{{selectedContacts.department.name}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <div class="to-talk">
+                                                <a [routerLink]="['/chat/',selectedContacts.cellphone,selectedContacts.membername,1]" class="btn btn-primary btn-block"><i class="fa fa-weixin m-r-xs"></i>聊天</a>
+                                            </div>
+                                        </div>
+
+                                        <div class="panel no-border text-center bg-white wrapper">
+                                            <span class="user-info-tag active">资料</span>
+
+                                        </div>
+
+                                        <div class="pc-user-info">
+                                            <div class="pc-user-info-item-3">
+                                                <div class="pc-user-info-tit">个人信息</div>
+                                                <div class="pc-user-info-item">
+                                                    <span class="pc-user-info-label">姓名</span>
+                                                    <span class="clear">安娜</span>
+                                                </div>
+                                                <div class="pc-user-info-item">
+                                                    <span class="pc-user-info-label">性别</span>
+                                                    <span class="clear">女</span>
+                                                </div>
+                                                <div class="pc-user-info-item">
+                                                    <span class="pc-user-info-label">出生日期</span>
+                                                    <span class="clear">安娜</span>
+                                                </div>
+                                                <div class="pc-user-info-item">
+                                                    <span class="pc-user-info-label">家乡</span>
+                                                    <span class="clear">河北 张家口</span>
+                                                </div>
+                                                <div class="pc-user-info-item">
+                                                    <span class="pc-user-info-label">居住地</span>
+                                                    <span class="clear">北京 朝阳</span>
+                                                </div>
+                                                <div class="pc-user-info-item">
+                                                    <span class="pc-user-info-label">星座</span>
+                                                    <span class="clear">狮子座</span>
+                                                </div>
+                                                <div class="pc-user-info-item">
+                                                    <span class="pc-user-info-label">爱好</span>
+                                                    <span class="clear">{{selectedContacts.likeMatch}}</span>
+                                                </div>
+                                                <div class="pc-user-info-item">
+                                                    <span class="pc-user-info-label">介绍</span>
+                                                    <span class="clear">此处是内容介绍</span>
+                                                </div>
+                                            </div>
+                                            <div class="pc-user-info-item-3">
+                                                <div class="pc-user-info-tit">公司信息</div>
+                                                <div class="pc-user-info-item">
+                                                    <span class="pc-user-info-label">部门</span>
+                                                    <span class="clear">产品部</span>
+                                                </div>
+                                                <div class="pc-user-info-item">
+                                                    <span class="pc-user-info-label">职位</span>
+                                                    <span class="clear">UI设计师</span>
+                                                </div>
+                                                <div class="pc-user-info-item">
+                                                    <span class="pc-user-info-label">工号</span>
+                                                    <span class="clear">1993234</span>
+                                                </div>
+                                                <div class="pc-user-info-item">
+                                                    <span class="pc-user-info-label">入职日期</span>
+                                                    <span class="clear">2016-02-02</span>
+                                                </div>
+
+                                            </div>
+                                            <div class="pc-user-info-item-3">
+                                                <div class="pc-user-info-tit">联系方式</div>
+                                                <div class="pc-user-info-item">
+                                                    <span class="pc-user-info-label">手机</span>
+                                                    <span class="clear">{{selectedContacts.cellphone}}</span>
+                                                </div>
+                                                <div class="pc-user-info-item">
+                                                    <span class="pc-user-info-label">邮件</span>
+                                                    <span class="clear">{{selectedContacts.email}}</span>
+                                                </div>
+                                                <div class="pc-user-info-item">
+                                                    <span class="pc-user-info-label">微信</span>
+                                                    <span class="clear">{{selectedContacts.wechat}}</span>
+                                                </div>
+                                                <div class="pc-user-info-item">
+                                                    <span class="pc-user-info-label">QQ</span>
+                                                    <span class="clear">{{selectedContacts.qq}}</span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- / main -->
+            </div>
+
+        </div>
+    </div>
+    <!-- /content -->

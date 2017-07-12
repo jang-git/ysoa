@@ -1,0 +1,77 @@
+<div id="content" class="app-content">
+  <div class="app-content-body app-content-full fade-in-up ng-scope h-full">
+    <div class="hbox hbox-auto-xs">
+      <!-- left col -->
+      <div class="col w-lg lt b-r">
+        <div class="vbox">
+          <div class="wrapper b-b pc-50">
+            <div class="text-center padder-md">
+              应用
+            </div>
+            <a class="pc-editbtn text-muted" href="javascript:;">
+                <i class="icon-settings text-lg"></i>
+            </a>
+          </div>
+
+          <div class="row-row">
+            <div class="cell scrollable">
+              <div class="cell-inner">
+                <div class="tongxunlu">
+                  <div class="list-group no-radius no-border">
+                    <a class="list-group-item no-border" routerLink="activity"  routerLinkActive="hover">
+                        <span class="thumb-sm m-r-xs"><img src="assets/images/activity.png" alt=""></span>
+                        活动
+                    </a>
+                    <a class="list-group-item" routerLink="bbs"  routerLinkActive="hover">
+                        <span class="thumb-sm m-r-xs"><img src="assets/images/bbs.png" alt=""></span>
+                        论坛
+                    </a>
+                    <!--<a class="list-group-item">
+                        <span class="thumb-sm m-r-xs"><img src="assets/images/icon-hqgl.png" alt=""></span>
+                        后勤管理
+                    </a>
+                    <a class="list-group-item">
+                        <span class="thumb-sm m-r-xs"><img src="assets/images/icon-wjda.png" alt=""></span>
+                        文件档案
+                    </a>
+                    <a class="list-group-item">
+                        <span class="thumb-sm m-r-xs"><img src="assets/images/icon-hys.png" alt=""></span>
+                        会议室
+                    </a>
+                    <a class="list-group-item">
+                        <span class="thumb-sm m-r-xs"><img src="assets/images/icon-hwms.png" alt=""></span>
+                        会务秘书
+                    </a>
+                    <a class="list-group-item">
+                        <span class="thumb-sm m-r-xs"><img src="assets/images/icon-dxgl.png" alt=""></span>
+                        短信管理
+                    </a>-->
+                    <a class="list-group-item" routerLink="project-manage"  routerLinkActive="hover">
+                        <span class="thumb-sm m-r-xs"><img src="assets/images/icon-xmgl.png" alt=""></span>
+                        项目管理
+                    </a>
+                    <a class="list-group-item" routerLink="archives"  routerLinkActive="hover">
+                        <span class="thumb-sm m-r-xs"><img src="assets/images/icon-zbgl.png" alt=""></span>
+                        公文管理
+                    </a>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / left col -->
+      <!-- main -->
+      <div class="col">
+
+          <router-outlet></router-outlet>
+        
+      </div>
+      <!-- / main -->
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,154 @@
+<div class="wrapper bg-light lt b-b pc-50 btn-group-forqiban  text-center">
+    <button (click)="back()" class="btn m-b-xs btn-default pull-left" style="padding: 0 10px;">
+        <i class="icon-action-undo "></i>
+    </button>
+    <div class="display-block">{{ projectName }}</div>
+    <span class="pull-right">负责人： <b class="m-r-xxs">{{ leaderList }}</b> </span>
+</div>
+<div class="row-row">
+    <div class="cell bg-light lt b-b">
+        <div class="cell-inner">
+            <div class="wrapper-md tab-hide active">
+                <div class="clearfix">
+                    <div class="pull-left form-inline">
+                        <ul role="tablist" class="clearfix no-margin no-padding project_tab">
+                            <li [class.active]="selectId === 1">
+                                <a (click)="getTabOne(projectid)">待办</a>
+                            </li>
+                            <li [class.active]="selectId === 2">
+                                <a (click)="getTabTwo(projectid)">已完成</a>
+                            </li>
+                            <li [class.active]="selectId === 3">
+                                <a (click)="getTabThree(projectid)">项目文件</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pull-right form-inline">
+                        <div class="form-group">
+                            <a class="btn btn-bg btn-primary" [routerLink]="['../../task-add',projectid]">
+                                <i class="fa fa-plus text"></i>
+                                <span class="text">新建任务</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project">
+                    <div *ngIf="selectId < 3">
+                        <ul class="no-padder-l pt20 clearfix row">
+                            <li *ngFor="let task of taskList" class="col-lg-12">
+                                <div class="bg-white list-group padder-md project_list">
+                                    <strong style="right: 20px;" class="detail_img fa fa-bookmark" [ngClass]="{'color-f3f3f3': task.level == 0, 'color-fc6767':task.level == 1}"></strong>
+                                    <div class="clearfix row padder-v">
+                                        <div class="col-sm-1 mt20 text-right">
+                                            <label class="i-checks position_ra">
+                                                <input type="checkbox" [checked]="selectId === 2" (click)="changeState(task)">
+                                                <i></i>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <a [routerLink]="['/application/project-manage/task-detail/', task.id, task.projectid]" class="font-bold width-50">{{task.name}}</a>
+                                            <p class="color-aaa font12"><span>执行者&nbsp;&nbsp;|&nbsp;&nbsp;{{task.executornames}}</span>
+                                                <span class="pull-right position_ra"><i class="glyphicon glyphicon-calendar" style="left: -15px;"></i>{{task.closingdate}}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div *ngIf="selectId === 3">
+                        <ul class="no-padder-l pt20 clearfix row">
+                            <li class="col-lg-12">
+                                <div class="bg-white list-group padder-md project_list">
+                                    <div class="clearfix row b-b">
+                                        <table border="0" cellspacing="" cellpadding="" class="width-100 project_table">
+                                            <tbody>
+                                                <tr class="row b-b">
+                                                    <td class="col-sm-1">
+                                                        <label class="i-checks position_ra">
+                                                            <input value="" type="checkbox">
+                                                            <i></i>
+                                                        </label>
+                                                    </td>
+                                                    <td class="col-sm-5">文件名</td>
+                                                    <td class="col-sm-2">创建单位</td>
+                                                    <td class="col-sm-2">创建人</td>
+                                                    <td class="col-sm-2">创建时间</td>
+                                                </tr>
+                                                <tr *ngFor="let item of fileList" class="row b-b">
+                                                    <td class="col-sm-1">
+                                                        <label class="i-checks position_ra">
+                                                            <input value="" type="checkbox">
+                                                            <i></i>
+                                                        </label>
+                                                    </td>
+                                                    <td class="col-sm-5"><a href="{{baseUrl}}{{item.fileurl}}">{{item.filename}}</a></td>
+                                                    <td class="col-sm-2 color-aaa">{{item.departmentname}}</td>
+                                                    <td class="col-sm-2 color-aaa">{{item.membername}}</td>
+                                                    <td class="col-sm-2 color-aaa">{{item.createtime | date:"yyyy-MM-dd"}}</td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </li>
+                            <!--<li class="col-lg-12">
+                                <div class="bg-white list-group padder-md project_list">
+                                    <div class="clearfix row b-b">
+                                        <table border="0" cellspacing="" cellpadding="" class="width-100 project_table">
+                                            <tbody>
+                                                <tr class="row b-b">
+                                                    <td class="col-sm-1">
+                                                        <label class="i-checks position_ra">
+																	                <input value="" type="checkbox">
+																	                <i></i>
+																	            </label>
+                                                    </td>
+                                                    <td class="col-sm-5">
+                                                        已选择1项
+                                                        <div class="ml20" style="display: inline-block;">
+                                                            <i class="icon-cloud-upload color-40a7ff ml10">上传</i><i class="icon-cloud-download color-40a7ff ml10">下载</i>
+                                                            <i class="fa fa-trash-o color-40a7ff ml10">删除</i>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="row b-b">
+                                                    <td class="col-sm-1">
+                                                        <label class="i-checks position_ra">
+																	                <input value="" type="checkbox">
+																	                <i></i>
+																	            </label>
+                                                    </td>
+                                                    <td class="col-sm-5">我是文件名称.png</td>
+                                                    <td class="col-sm-2 color-aaa">办公室</td>
+                                                    <td class="col-sm-2 color-aaa">王虎虎</td>
+                                                    <td class="col-sm-2 color-aaa">2015/04/23</td>
+                                                </tr>
+                                                <tr class="row">
+                                                    <td class="col-sm-1">
+                                                        <label class="i-checks position_ra">
+																	                <input value="" type="checkbox">
+																	                <i></i>
+																	            </label>
+                                                    </td>
+                                                    <td class="col-sm-5">我是文件名称.png</td>
+                                                    <td class="col-sm-2 color-aaa">办公室</td>
+                                                    <td class="col-sm-2 color-aaa">王虎虎</td>
+                                                    <td class="col-sm-2 color-aaa">2015/04/23</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

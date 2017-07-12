@@ -1,0 +1,54 @@
+<style>
+  .list-group{ margin-bottom: none;}
+  .list-group-item{ margin-bottom: 16px; overflow: hidden;}
+  .list-group-item:first-child{ border-radius: 4px;}
+  .list-group-item:last-child{ border-radius: 4px;}
+  .btn-primary,.btn-primary:focus,.btn-primary:hover, .btn-primary:visited, .btn-primary:active{ background-color: #0086db !important; }
+</style>
+<div class="app app-header-fixed " style="background-color:#40a7ff">
+
+<div style="width:880px; margin-left:auto; margin-right:auto;">
+  <div class="" style="padding:20px 10px 20px 50px; -webkit-app-region: drag">
+    <img src="assets/images/ysylogo.png" height="70" style="margin-top:50px;" alt="">
+  </div>
+  <div class="clearfix" >
+    <div class="pull-left" style="padding-left:50px; padding-top:30px;">
+      <img src="assets/images/bg.png" style="height:237px;" alt="">
+    </div>
+    <div class="pull-right" style="width:320px;">
+      <div class="m-b-lg">
+        <!-- <div class="wrapper text-center">
+          <strong><alert></alert></strong>
+        </div> -->
+        <div class="wrapper text-center" ng-show="authError" style="min-height:70px;">
+            <div *ngIf="form.submitted && !username.valid" class="text-white">用户名必须输入！</div>
+            <div *ngIf="form.submitted && !password.valid" class="text-white">密码必须输入,至少要6位！</div>
+        </div>
+        <form name="form" #form="ngForm" (ngSubmit)="form.form.valid && login()" novalidate class="form-validation">
+
+          <div class="list-group list-group-sm">
+            <div class="list-group-item">
+              <input autocomplete="off" required name="username" [(ngModel)]="user.username" #username="ngModel" type="text" class="form-control no-border" placeholder="请输入用户名">
+            </div>
+            <div class="list-group-item">
+               <input required minlength="6" [(ngModel)]="user.password" name="password" #password="ngModel" type="password" class="form-control no-border" placeholder="请输入密码">
+            </div>
+          </div>
+          <button [disabled]="loading" type="submit" class="btn btn-primary btn-block">登录 <span *ngIf="loading">...</span></button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+
+    </div>
+    <div class="col-md-7">
+
+
+    </div>
+  </div>
+
+
+</div>
+</div>

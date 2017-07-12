@@ -1,0 +1,53 @@
+<div class="wrapper bg-light lt b-b pc-50 btn-group-forqiban  text-center">
+    <button class="btn m-b-xs btn-default pull-left" style="padding: 0 10px;">
+        <i (click)="back()" class="icon-action-undo "></i>
+    </button>
+    <div class="display-block">项目进度</div>
+</div>
+<div class="row-row">
+    <div class="cell bg-light lt b-b">
+        <div class="cell-inner">
+            <div class="wrapper-lg tab-hide active">
+                <div class="project">
+                    <div>
+                        <ul class="no-padding clearfix row">
+                            <li class="col-lg-12">
+                                <div class="bg-white list-group padder-md project_list">
+                                    <div class="clearfix b-b padder-v ">
+                                        <h4 class="font-bold pull-left width-50">{{projectName}}</h4>
+                                        <div class="pull-right">
+                                            <span *ngFor="let people of leaderList">
+                                                <img pTooltip="{{ people.corpationMember.membername }}" showDelay="500" tooltipPosition="top" class="border-ra100 background-a4cc6d font-normal name_zx mt4 m-r" src="http://ysoa.qiban.com/{{ people.headPortrait }}" alt="">
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <p class="color-aaa mt10 pb10 position_ra">
+                                        <span style="position: absolute;left: 10px;"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        <span class="ml30">{{projectStartTime}} 至 {{projectEndTime}}</span>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="clearfix">
+                            <div class="form-group pull-left form-inline col-sm-4">
+                                <label>按任务状态</label>
+                                <select name="account" class="form-control" style="width: 50%;">
+																	<option>全部</option>
+																	<option>不重要</option>
+																</select>
+                            </div>
+                            <div class="pull-right form-inline">
+                                <div class="form-group">
+                                    <button class="btn btn-bg btn-primary" ui-toggle-class="show" target="#moreless">
+															          <span class="text">关注任务</span>
+															        </button>
+                                </div>
+                            </div>
+                        </div>
+                        <textarea class="form-control" name="" rows="" cols=""></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

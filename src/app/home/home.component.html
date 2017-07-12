@@ -1,0 +1,108 @@
+<div class="app app-header-fixed app-aside-folded">
+    <!-- 左侧导航栏 -->
+    <aside id="aside" class="app-aside bg-dark">
+        <div class="aside-wrap">
+            <div class="navi-wrap">
+                <!-- nav -->
+                <nav ui-nav class="navi clearfix">
+                    <ul class="nav">
+                        <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                            <span>工具栏</span>
+                        </li>
+                        <li routerLink="/chat" routerLinkActive="active">
+                            <a class="auto">
+                                <i class="icon icon-active"><img src="assets/images/wechat.png" height="24" alt=""></i>
+                                <i class="icon icon-active1"><img src="assets/images/wechat_active.png" height="24" alt=""></i>
+                                <span class="font-bold">聊天</span>
+                            </a>
+                        </li>
+                        <li routerLink="/contacts" routerLinkActive="active">
+                            <a class="auto">
+                                <i class="icon icon-active"><img src="assets/images/list.png" height="24" alt=""></i>
+                                <i class="icon icon-active1"><img src="assets/images/list-active.png" height="24" alt=""></i>
+                                <span class="font-bold ng-scope" translate="aside.nav.CALENDAR">通讯录</span>
+                            </a>
+                        </li>
+                        <li routerLink="/application" routerLinkActive="active">
+                            <a class="auto">
+                                <b class="badge bg-info pull-right"></b>
+                                <i class="icon icon-active"><img src="assets/images/settings.png" height="24" alt=""></i>
+                                <i class="icon icon-active1"><img src="assets/images/setting-active.png" height="24" alt=""></i>
+                                <span class="font-bold">应用</span>
+                            </a>
+                        </li>
+                        <li routerLink="/netdisk" routerLinkActive="active">
+                            <a class="auto">
+                                <b class="badge bg-info pull-right"></b>
+                                <i class="icon icon-active"><img src="assets/images/netdisk.png" height="24" alt=""></i>
+                                <i class="icon icon-active1"><img src="assets/images/netdisk-active.png" height="24" alt=""></i>
+                                <span class="font-bold">网盘</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- nav -->
+
+                <!-- aside footer user-setting -->
+                <div class="user-setting">
+                    <div class="login-user" ngbDropdown>
+                        <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
+                            <span class="avatar-pic-txt">xu</span>
+                        </a>
+
+                        <div class="user-setting-part animated">
+                            <form>
+                                <div class="panel panel-settings bg-white">
+                                    <div class="panel-heading">
+                                        <div class="clearfix">
+                                            <a href="javascript:;" class="pull-left thumb-sm avatar m-r-sm">
+                                            <img src="{{avatarUrl}}" style="height:40px;" alt="">
+                                        </a>
+                                            <div class="clear">
+                                                <div class="text-base">{{userName}}</div>
+                                                <small class="text-muted">{{userCompanyName}}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="list-group no-radius">
+
+                                        <a class="list-group-item media">
+                                            <i class="fa fa-comment fa-fw text-muted"></i> 个人设置
+                                        </a>
+                                        <!--<a class="list-group-item">
+                                            <i class="fa fa-envelope fa-fw text-muted"></i> 切换企业
+                                        </a>-->
+                                        <!--<a class="list-group-item">
+                                            <i class="fa fa-eye fa-fw text-muted"></i> 系统设置
+                                        </a>-->
+                                        <a *ngIf="isAdmin" class="list-group-item" routerLink="/setting/contacts" >
+                                            <i class="fa fa-eye fa-fw text-muted"></i> 联系人设置
+                                        </a>
+                                        <a class="list-group-item">
+                                            <i class="fa fa-comment fa-fw text-muted"></i> 修改密码
+                                        </a>
+                                        <a *ngIf="isAdmin" class="list-group-item" routerLink="/company-manage">
+                                            <i class="fa fa-envelope fa-fw text-muted"></i> 企业管理
+                                        </a>
+                                        <a class="list-group-item" (click)="logout()">
+                                            <i class="fa fa-eye fa-fw text-muted"></i> 退出登录
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- / aside footer -->
+            </div>
+        </div>
+    </aside>
+    <!-- / 左侧导航栏 -->
+
+    <!-- 主体内容区域 -->
+    <router-outlet></router-outlet>
+    <!-- / 主体内容区域 -->
+</div>
+<toaster-container></toaster-container>

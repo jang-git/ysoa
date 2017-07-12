@@ -1,0 +1,25 @@
+<div *ngIf="message.isTimeVisible" class="m-b message-system">
+    <div class="message-system-time">{{ message.time | date:"yyyy-MM-dd HH:mm" }}</div>
+</div>
+<div class="m-b" [ngClass]="{'message-box-m-r': !incoming, 'message-box-m-l': incoming}">
+    <a href="javascript:;" class="thumb-sm avatar" [ngClass]="{'pull-right': !incoming, 'pull-left': incoming}"><img src="assets/images/avatar.png" class="img-circle" alt="..."></a>
+    <div [ngClass]="{'m-r-xxl': !incoming, 'm-l-xxl': incoming}">
+
+        <div *ngIf="incoming" class="text-muted text-xs"><i class="fa fa-ok text-success"></i> {{message.from}}</div>
+        <div class="pos-rlt wrapper-sm" [ngClass]="{'message-box-r': !incoming, 'message-box-l': incoming}">
+            <span class="arrow pull-up" [ngClass]="{'right': !incoming, 'left': incoming}"></span>
+            <!-- {{message.time | date:"yyyy-MM-dd HH:mm"}} -->
+            <p *ngIf="message.type === 0" [innerHTML]="message.msg" class="m-b-none" style="word-break:break-all;">
+                {{message.msg}}
+            </p>
+            <p *ngIf="message.type === 2" [innerHTML]="message.msg" class="m-b-none" style="word-break:break-all;">
+                {{message.msg}}
+            </p>
+            <p *ngIf="message.type === 1" class="m-b-none" style="word-break:break-all;">
+              
+              <img [loaded] style="max-width:100%; max-height:200px; max-width:200px;" src="{{message.pic}}" alt="">
+            </p>
+        </div>
+
+    </div>
+</div>

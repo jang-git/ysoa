@@ -1,0 +1,50 @@
+<div class="wrapper bg-light lt b-b pc-50 btn-group-forqiban  text-center">
+  <div class="display-block">通讯录设置</div>
+</div>
+<div class="row-row">
+  <div class="cell bg-light lt b-b">
+    <div class="cell-inner">
+      <div class="wrapper-md">
+        <div class="padder bg-white">
+          <div class="b-b" style="padding-bottom: 50px;">
+            <label class="mt20">企业通讯录信息</label>
+            <div class="padder-v">
+              <!--<span class="btn btn-primary outlined m-r-sm m-b-sm">姓名</span>
+              <span class="btn btn-primary outlined m-r-sm m-b-sm">部门</span>
+              <span class="btn btn-primary outlined m-r-sm m-b-sm">职位</span>
+              <span class="btn btn-primary outlined m-r-sm m-b-sm">工号</span>
+              <span class="btn btn-primary outlined m-r-sm m-b-sm">手机号</span>
+              <span class="btn btn-primary outlined m-r-sm m-b-sm">性别</span>
+              <span class="btn btn-primary outlined m-r-sm m-b-sm">入职时间</span>
+              <span class="btn btn-primary outlined m-r-sm m-b-sm">分机号</span>
+              <span class="btn btn-primary outlined m-r-sm m-b-sm">办公地点</span>
+              <span class="btn btn-primary outlined m-r-sm m-b-sm">备注</span>-->
+              
+              <span *ngFor="let label of labelList" class="btn outlined m-r-sm m-b-sm" [ngClass]="{'btn-primary':label.delForbidden,'btn-success':!label.delForbidden}">
+                {{ label.name }} <i *ngIf="!label.delForbidden" (click)="removeLabel(label.id)" class="fa fa-minus pull-right"></i>
+              </span>
+              <!--<span class="btn btn-success outlined m-r-sm m-b-sm">自定义标签 <i (click)="removeLabel(label)" class="fa fa-minus pull-right"></i></span>-->
+            </div>
+            <div class="form-inline">
+              <div class="form-group">
+                <input type="text" [(ngModel)]="label.name" class="form-control no-border bg-gray" style="width:150px;" placeholder="添加自定义信息">
+              </div>
+              <button (click)="addLabel()" class="btn btn-primary"><i class="fa fa-plus"></i></button>
+            </div>
+          </div>
+          <div>
+            <label class="mt20">移动端需要展示的信息</label>
+            <div class="mt20">
+
+              <label *ngFor="let checkbox of labelList" class="i-checks m-r m-b">
+                  <input [(ngModel)]="checkbox.selected" (click)="check(checkbox.id)" type="checkbox" [disabled]="checkbox.disabled" [checked]="checkbox.selected"><i></i>{{ checkbox.name }}
+              </label>
+
+              <a (click)="updateLabelShow()" class="btn btn-primary" type="button">更新</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

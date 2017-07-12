@@ -1,0 +1,120 @@
+<div class="wrapper-lg tab-hide active">
+	<div class="m-b-md clearfix">
+		<div class="pull-left form-inline">
+			<div class="form-group">
+				<input type="text" [(ngModel)]="searchText" class="form-control no-border" style="width: 300px;" placeholder="搜索项目名称...">
+			</div>
+			<button (click)="searchProject()" class="btn btn-primary">搜索</button>
+		</div>
+		<div class="pull-right form-inline">
+			<div class="form-group">
+				<a class="btn btn-bg btn-primary" [routerLink]="['../project-add']">
+		          <i class="fa fa-plus text"></i>
+		          <span class="text" >新建项目</span>
+		        </a>
+			</div>
+		</div>
+	</div>
+	<div class="project">
+		<ul role="tablist" class="clearfix no-margin no-padding project_tab">
+			<li [class.active]="isSelected === 0">
+				<a (click)="loadProject(0)">进行中的项目</a>
+			</li>
+			<li [class.active]="isSelected === 1">
+				<a (click)="loadProject(1)">已归档的项目</a>
+			</li>
+		</ul>
+
+		<div>
+			<ul class="no-padder-l clearfix row pt20">
+				<li *ngFor="let project of projectList" class="col-sm-6">
+					<div class="bg-white list-group padder-md project_list">
+						<a [routerLink]="['../project-detail/', project.id]">
+							<img *ngIf="project.state === 2" class="guanzhu" src="assets/images/yizanting.png">
+							<img *ngIf="project.supervise > 0 " class="guanzhu" src="assets/images/yiguanzhu.png">
+							<h4 class="b-b padder-v font-bold">{{ project.projectname}}</h4>
+							<p class="color-aaa m-t-md m-b-md">我有<span class="color-40a7ff">{{ project.totaltask - project.finishtask }}条</span>待办任务</p>
+						</a>
+						<div class="clearfix position_ra" style="padding-bottom: 20px;" ngbDropdown>
+							<div class="pull-left button">
+								{{ project.finishtask}}/{{ project.totaltask }}
+							</div>
+							<a ngbDropdownToggle class="pull-right text-muted" href="javascript:;">
+								<i class="icon-settings text-lg"></i>
+							</a>
+							<ul aria-labelledby="dropdownConfig" class="project_menu dropdown-menu">
+								<li>
+									<a (click)="project_show(project,content)"><i class="icon-envelope-letter m-r"></i>项目信息</a>
+								</li>
+								<li>
+									<a [routerLink]="['/application/project-manage/project-progress/', project.id]"><i class="icon-pie-chart m-r"></i>项目进度</a>
+								</li>
+								<li>
+									<a (click)="exportData(project)" ><i class="fa fa-external-link m-r"></i>导出数据</a>
+								</li>
+								<li *ngIf="isSelected === 0">
+									<a (click)="confirmT(project)"><i class="icon-folder m-r"></i>归档项目</a>
+								</li>
+								<li *ngIf="isSelected === 1">
+									<a (click)="confirmC(project)"><i class="icon-folder m-r"></i>重启项目</a>
+								</li>
+								<li>
+									<a (click)="confirm(project)"><i class="fa fa-trash-o fa-lg m-r"></i>删除项目</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+	<div class="modal-header text-center">
+		<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">×</button>
+		<h4 class="modal-title">项目信息</h4>
+	</div>
+	<div class="modal-body row">
+		<div class="form-group col-sm-12">
+			<label>项目名称</label><br>
+			<input [(ngModel)]="projectModal.name" class="form-control width-100" placeholder="请填写项目名称" type="text">
+		</div>
+		<div class="form-group col-sm-12">
+			<label>负责人</label><br>
+			<div class="zhixingren_add form-control">
+				<span *ngFor="let leader of projectModal.leaderList" class="m-r-xs">
+					<img pTooltip="{{leader.corpationMember.membername}}" tooltipPosition="top" class="border-ra100 name_zx" src="http://ysoa.qiban.com/{{ leader.headPortrait }}" alt="">
+				</span>
+				<!--<b class="border-ra100 background-82b7cb font-normal name_zx">艳萍</b>-->
+			</div>
+		</div>
+		<div class="form-group col-sm-12">
+			<label>关注人</label><br>
+			<div class="zhixingren_add form-control">
+				<span *ngFor="let leader of projectModal.followList" class="m-r-xs">
+					<img pTooltip="{{leader.corpationMember.membername}}" showDelay="500" tooltipPosition="top" class="border-ra100 name_zx" src="http://ysoa.qiban.com/{{ leader.headPortrait }}" alt="">
+				</span>
+				<!--<b class="border-ra100 background-82b7cb font-normal name_zx">艳萍</b>-->
+			</div>
+		</div>
+		<div class="form-group col-sm-12">
+			<label>项目成员</label><br>
+			<div class="zhixingren_add form-control">
+				<span *ngFor="let leader of projectModal.normList" class="m-r-xs">
+					<img pTooltip="{{leader.corpationMember.membername}}" tooltipPosition="top" class="border-ra100 name_zx" src="http://ysoa.qiban.com/{{ leader.headPortrait }}" alt="">
+				</span>
+				<!--<b class="border-ra100 background-40a7ff font-normal name_zx font20">+</b>-->
+			</div>
+		</div>
+		<div class="form-group col-sm-12">
+			<label>项目描述</label><br>
+			<textarea [(ngModel)]="projectModal.desc" class="form-control" name="" rows="" cols=""></textarea>
+		</div>
+	</div>
+	<div class="modal-footer no-border">
+		<button type="button" class="btn btn-default" (click)="c('Close click')">关闭</button>
+		<button type="button" class="btn btn-primary">确定</button>
+	</div>
+</ng-template>

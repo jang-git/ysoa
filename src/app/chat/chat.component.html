@@ -1,0 +1,101 @@
+<!-- 聊天的主要区域 -->
+<div id="content" class="app-content">
+    <div class="app-content-body app-content-full fade-in-up ng-scope h-full">
+        <div class="hbox">
+            <!-- left col -->
+            <div class="col w-lg lt b-r">
+              <div class="vbox">
+                <div class="bg-light lt padder b-b pc-50" style="padding-right: 30px;">
+                    <div class="module-search m-t-sm">
+                        <div class="module-search-input-area">
+                            <input type="text" class="module-search-input" placeholder="请输入关键词">
+                            <span class="module-search-icon-search fa fa-search"></span>
+                        </div>
+                        <span class="icon icon-close module-search-icon-clear hidden"></span>
+                    </div>
+                    <a (click)="createGroup()" class="pc-editbtn text-muted" style="right:5px;" href="javascript:;">
+                        <i class="icon-plus text-lg"></i>
+                    </a>
+
+                </div>
+                <chat-threads class="row-row"></chat-threads>
+              </div>
+            </div>
+            <!-- / left col -->
+            <!-- main -->
+
+            <div class="col">
+              <router-outlet></router-outlet>
+              <!-- <chat-window class="vbox">这里是默认聊天界面，没有和任何一个人聊天的时候出现</chat-window> -->
+            </div>
+            <!-- / main -->
+        </div>
+
+    </div>
+</div>
+<!-- /聊天的主要区域 -->
+<!-- 选择通讯录 -->
+<div (click)="stopPropagation($event)" class="tongxunlu-mask" *ngIf="expression"></div>
+<div (click)="stopPropagation($event)" class="tongxunlu-panel animated bounceInUp" style="display:block;" *ngIf="expression">
+    <div class="hbox">
+        <div class="col b-r bg-white">
+          <div class="vbox">
+            <div class="bg-light lt wrapper">
+                <div class="module-search bg-grey">
+                    <div class="module-search-input-area">
+                        <input type="text" class="module-search-input" placeholder="请输入关键词">
+                        <span class="module-search-icon-search fa fa-search"></span>
+                    </div>
+                    <span class="icon icon-close module-search-icon-clear hidden"></span>
+                </div>
+            </div>
+            <div class="row-row">
+                <div class="cell scrollable">
+                    <div class="cell-inner">
+                      <dl *ngFor="let contact of contacts" class="tongxunlu">
+                          <dt>{{contact.name | uppercase}}</dt>
+                          <dd *ngFor="let contactview of contact.data" id="{{contactview.cellphone}}" (click)="check(contactview)"
+                               class="clearfix">
+                              <span class="pull-right contacts-check" [class.contacts-checked]="contactview.ischeck">
+                                <i class="fa fa-circle-thin"></i>
+                                <i class="fa fa-check-circle"></i>
+                                <i class="fa fa-check-circle text-success"></i>
+                              </span>
+                              <span class="tongxunlu-avatar">{{contactview.fullpinyin | slice:0:[2] | uppercase}}</span>
+                              <span class="tongxunlu-name">{{contactview.membername}}</span>
+                          </dd>
+                      </dl>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+            <div class="vbox">
+                <div class="row-row">
+                    <div class="cell scrollable hover">
+                        <div class="cell-inner">
+                            <div class="wrapper">
+                              <input class="form-control" [(ngModel)]="tribeName" type="text" name="" value="" placeholder="请填写群组名称">
+                            </div>
+                            <div class="wrapper text-muted text-xs">已选择联系人</div>
+                            <dl class="tongxunlu no-border">
+                                <dd *ngFor="let contact of checkedContacts" class="clearfix">
+                                  <span class="pull-right" (click)="delContact(contact.cellphone)"><i class="icon-close"></i></span>
+                                  <span class="tongxunlu-avatar">{{contact.fullpinyin | slice:0:[2] | uppercase}}</span>
+                                  <span class="tongxunlu-name">{{contact.membername}}</span>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrapper text-center">
+                    <button (click)="hide()" class="btn m-b-xs w-xs btn-default m-r">取消</button>
+                    <button (click)="createTribe()" class="btn m-b-xs w-xs btn-primary">创建群组</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- /选择通讯录 -->

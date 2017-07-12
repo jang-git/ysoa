@@ -1,0 +1,43 @@
+<div class="wrapper-lg tab-hide active">
+	<div class="m-b-md clearfix">
+		<div class="pull-left form-inline">
+			<div class="form-group">
+				<input type="text" class="form-control no-border" style="width: 300px;" placeholder="搜索任务...">
+			</div>
+			<button class="btn btn-primary" (click)="searchTask()">搜索</button>
+		</div>
+	</div>
+	<div class="project">
+		<ul class="clearfix no-margin no-padding project_tab">
+			<li [class.active]="isSelected === 0">
+				<a (click)="loadTask(0)">待办</a>
+			</li>
+			<li [class.active]="isSelected === 1">
+				<a (click)="loadTask(1)">已完成</a>
+			</li>
+		</ul>
+		<div class="tab-hide active">
+			<ul class="no-padder-l clearfix row pt20">
+				<li *ngFor="let task of taskList" class="col-lg-12">
+					<div class="bg-white list-group padder-md project_list">
+						<strong style="right: 20px;" class="detail_img fa fa-bookmark color-f3f3f3"></strong>
+						<div class="clearfix row padder-v">
+							<div class="col-sm-1 mt20 text-right">
+								<label class="i-checks position_ra">
+									<input [checked]="isSelected === 1" (click)="changeState(task)" type="checkbox">
+									<i></i>
+								</label>
+							</div>
+							<div class="col-sm-11">
+								<a [routerLink]="['../task-detail/', task.id, task.projectid]" class="font-bold width-50">{{ task.name }}</a>
+								<p class="color-aaa font12"><span>所属项目&nbsp;&nbsp;|&nbsp;&nbsp;<span class="color-40a7ff">我是项目标题</span></span>
+									<span class="pull-right position_ra color-ff4659"><i class="glyphicon glyphicon-calendar color-ff4659" style="left: -15px;top:0;"></i>{{task.closingdate}}</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

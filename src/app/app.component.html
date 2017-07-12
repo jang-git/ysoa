@@ -1,0 +1,12 @@
+<!-- 用来标记出路由器该在哪里显示视图 -->
+<router-outlet></router-outlet>
+<div class="loading-overlay" *ngIf="loading">
+    <!-- show something fancy here, here with Angular 2 Material's loading bar or circle -->
+    <div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+      </div>
+</div>

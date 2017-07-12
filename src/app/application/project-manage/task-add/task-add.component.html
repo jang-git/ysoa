@@ -1,0 +1,137 @@
+<div class="wrapper bg-light lt b-b pc-50 btn-group-forqiban  text-center">
+    <button (click)='back()' class="btn m-b-xs btn-default pull-left" style="padding: 0 10px;">
+        <i class="icon-action-undo "></i>
+    </button>
+    <div class="display-block">新建任务</div>
+</div>
+<div class="row-row">
+    <div class="cell bg-light lt b-b">
+        <div class="cell-inner">
+            <div class="wrapper-lg">
+                <div class="m-b-md clearfix row">
+                    <div class="pull-left form-inline col-sm-8">
+                        <div class="form-group width-100">
+                            <label>任务名称</label><br>
+                            <input [(ngModel)]="name" class="form-control width-100" placeholder="请填写任务名称" type="text">
+                        </div>
+                    </div>
+                    <div class="pull-right form-inline col-sm-4">
+                        <label>优先级</label><br>
+                        <select name="account" class="form-control width-100" [ngModel]="level" (ngModelChange)="level=$event;">
+                            <option [value]="0">普通</option>
+                            <option [value]="1">重要</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-12">
+                        <label>执行人</label><br>
+                        <div class="zhixingren_add form-control">
+                            <ng-template ngFor let-contactview [ngForOf]="executorids">
+                                <img *ngIf="contactview.imgSrc != ''" class="border-ra100 background-a4cc6d font-normal name_zx" src="{{contactview.imgSrc}}" >
+                                <span *ngIf="contactview.imgSrc == ''" class="border-ra100 background-a4cc6d font-normal name_zx">{{contactview.firstchar}}</span>
+                            </ng-template>
+                            <!--<b class="border-ra100 background-a4cc6d font-normal name_zx">呼呼</b>
+                            <b class="border-ra100 background-82b7cb font-normal name_zx">艳萍</b> |-->
+                            <b (click)="chooseMember()" class="border-ra100 background-40a7ff font-normal name_zx ml10 font20">+</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-12">
+                        <label>截止日期</label><br>
+                        <div class="input-group">
+                            <p-calendar readonlyInput="readonlyInput" dateFormat="yy-mm-dd" [(ngModel)]="endDate" [showIcon]="true" [showTime]="true"></p-calendar>
+                        </div>
+                    </div>
+                    <!--{{endDate|date}}
+<p-calendar [inputStyle]="{'display':'none'}" dateFormat="yy-mm-dd" [(ngModel)]="endDate" [showIcon]="true" [showTime]="true">
+</p-calendar>-->
+
+                    <!--<div class="form-group  col-sm-6">
+                        <label>添加提醒</label><br>
+                        <div class="input-group">
+                            <div class="input-group">
+                                <p-calendar [(ngModel)]="alertTime" [showIcon]="true" [showTime]="true"></p-calendar>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-12">
+                        <label>任务描述</label><br>
+                        <textarea class="form-control" [(ngModel)]="desc" ></textarea>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div (click)="addTask()" class="btn btn-primary btn-block" style="width: 30%;margin: 50px auto 0;">确定</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 选择通讯录 -->
+<div (click)="stopPropagation($event)" class="tongxunlu-mask" *ngIf="expression"></div>
+<div (click)="stopPropagation($event)" class="tongxunlu-panel animated" style="display:block;" *ngIf="expression">
+    <div class="hbox">
+        <div class="col b-r bg-white">
+            <div class="vbox">
+                <div class="bg-light lt wrapper">
+                    <div class="module-search bg-grey">
+                        <div class="module-search-input-area">
+                            <input type="text" class="module-search-input" placeholder="请输入关键词">
+                            <span class="module-search-icon-search fa fa-search"></span>
+                        </div>
+                        <span class="icon icon-close module-search-icon-clear hidden"></span>
+                    </div>
+                </div>
+                <div class="row-row">
+                    <div class="cell scrollable">
+                        <div class="cell-inner">
+                            <dl *ngFor="let contact of contactlist" class="tongxunlu">
+                                <dt>{{contact.title | uppercase}}</dt>
+                                <dd *ngFor="let contactview of contact.list" (click)="check(contactview)" class="clearfix">
+                                    <span class="pull-right contacts-check" [class.contacts-checked]="contactview.ischeck">
+                                        <i class="fa fa-circle-thin"></i>
+                                        <i class="fa fa-check-circle"></i>
+                                        <i class="fa fa-check-circle text-success"></i>
+                                    </span>
+                                    <img *ngIf="contactview.imgSrc != ''" class="tongxunlu-avatar" src="{{contactview.imgSrc}}" >
+                                    <span *ngIf="contactview.imgSrc == ''" class="tongxunlu-avatar">{{contactview.firstchar}}</span>
+                                    <!--<span class="tongxunlu-avatar">{{contactview.fullpinyin | slice:0:[2] | uppercase}}</span>-->
+                                    <span class="tongxunlu-name">{{contactview.name}}</span>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="vbox">
+                <div class="row-row">
+                    <div class="cell scrollable hover">
+                        <div class="cell-inner">
+                            <div class="wrapper text-muted text-xs">已选择联系人</div>
+                            <dl class="tongxunlu no-border">
+                                <dd *ngFor="let contact of checkedContacts" class="clearfix">
+                                    <span class="pull-right" (click)="delContact(contact.id)"><i class="icon-close"></i></span>
+                                    <!--<span class="tongxunlu-avatar">{{contact.fullpinyin | slice:0:[2] | uppercase}}</span>-->
+                                    <img *ngIf="contact.imgSrc != ''" class="tongxunlu-avatar" src="{{contact.imgSrc}}" >
+                                    <span *ngIf="contact.imgSrc == ''" class="tongxunlu-avatar">{{contact.firstchar}}</span>
+                                    <span class="tongxunlu-name">{{contact.name}}</span>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrapper text-center">
+                    <button (click)="hide()" class="btn m-b-xs w-xs btn-default m-r">取消</button>
+                    <button (click)="insertEle()" class="btn m-b-xs w-xs btn-primary">确定</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- /选择通讯录 -->

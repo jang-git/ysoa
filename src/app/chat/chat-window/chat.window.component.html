@@ -1,0 +1,166 @@
+<div class="wrapper bg-light lt b-b pc-50" ngbDropdown>
+    <div class="text-center padder-md">
+       {{toUserNickname}}
+    </div>
+    <a *ngIf="groupBtnSetting" class="pc-editbtn" href="javascript:;" ngbDropdownToggle>
+        <i class="icon-users text-lg"></i>
+    </a>
+    <!-- 设置群组 -->
+    <div *ngIf="groupBtnSetting" class="wechat-settings">
+      <div class="vbox" (click)="stopPropagation($event)">
+
+        <div class="wrapper">
+            <div class="">
+                <div class="text-xs">群名</div>
+                <div class="text-muted text-xs text-ellipsis hover-anchor">
+                    <span class="m-r-xs">{{currentTribe.name}}</span>
+                    <span class="hover-action"><i class="fa fa-edit "></i></span>
+                </div>
+            </div>
+            <div class="b-b padder-v">
+                <div class="text-xs">群公告</div>
+                <div class="text-xs text-ellipsis text-muted hover-anchor editNotice">
+                    <span (click)="showNotice()" class="m-r-xs">{{ currentTribe.notice | slice:0:[16] }}</span>
+                    <span class="hover-action"><i class="fa fa-angle-right "></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="row-row">
+            <div class="cell scrollable">
+                <div class="setting-list wrapper no-padder-t">
+                    <ul class="list-group no-borders m-b-none">
+                        <li (click)="addMemberforTribe(currentTribeMembers)" class="list-group-item no-padder-h addFriend">
+                            <img class="m-r-xs" src="assets/images/add_icon.png" height="24">
+                            <span class="text-base v-middle">添加成员</span>
+                        </li>
+                        <li *ngFor="let member of currentTribeMembers " class="list-group-item no-padder-h">
+                            <img class="m-r-xs" style="border-radius:500px;" src="{{ member.icon_url }}" height="24">
+                            <span class="text-base v-middle">{{member.nick}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+          
+        </div>
+        <div class="padder b-t b-light text-center">
+          <div class="m-xs"><a (click)="logutTribe()" href="javascript:;" class="text-danger">退出群聊</a></div>
+        </div>
+      </div>
+    </div>
+    <!-- /设置群组 -->
+</div>
+<div class="row-row">
+    <div class="cell bg-light lt b-b">
+        <div class="cell-inner">
+          <!-- <div class="" (scroll)='listenScrollAndGetMoreData($event)'>
+
+          </div> -->
+            <div class="panel-body msg-container-base" (scroll)='listenScrollAndGetMoreData($event)'>
+                <!-- <div *ngIf="getMoreData" class="text-center"><a (click)="getMoreHistoryData()">加载更多</a></div> -->
+                <chat-message *ngFor="let message of messages" [message]="message"></chat-message>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper">
+    <div class="m-b-sm m-l-sm">
+        <div id="myEmotBox" style="display:none"></div>
+        <input name="file" (change)="onChange($event)" style="display:none;" type="file" id="J_fileInput" />
+        <a href="javascript:;" id="myEmotTrigger" class="thumb thumb-tool m-r-xs"> <img src="assets/images/emoij.png" alt=""></a>
+        <!-- <a href="javascript:;" class="thumb thumb-tool m-r-xs"> <img src="assets/images/file.png" alt=""></a> -->
+        <a href="javascript:;" (click)="uploadPic()" class="thumb thumb-tool m-r-xs"> <img src="assets/images/pic.png" alt=""></a>
+    </div>
+    <textarea placeholder="请输入文字" id="message-content" (keydown.enter)="onEnter($event)" [(ngModel)]="draftMessage.msg"></textarea>
+</div>
+
+<!-- 群公告设置 -->
+<div *ngIf="noticeStatus" class="tongxunlu-mask"></div>
+<div *ngIf="noticeStatus" class="modal-panel wrapper noticeModal" style="display:block;">
+    <div class="hbox">
+        <div class="col">
+            <div class="vbox">
+                <div class="modal-pannel-heading text-center b-b">
+                    <i (click)="hideNotice($event)" class="fa fa-close pull-right"></i>
+                    群公告
+                </div>
+                <div class="row-row">
+                    <div class="cell scrollable">
+                        <div class="cell-inner">
+                            <div class="wrapper no-padder-h text-xs text-muted" contenteditable="true">
+                                  {{ currentTribe.notice }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrapper text-center b-t no-padder-b">
+                    <button (click)="hideNotice($event)" class="btn m-b-xs w-xs btn-default m-r">取消</button>
+                    <button (click)="updateNotice($event)" class="btn m-b-xs w-xs btn-primary">发布</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /群公告设置 -->
+<!-- 选择通讯录 -->
+<div (click)="stopPropagation($event)" class="tongxunlu-mask" *ngIf="contactsShow"></div>
+<div (click)="stopPropagation($event)" class="tongxunlu-panel animated bounceInUp" style="display:block; position:fixed;" *ngIf="contactsShow">
+    <div class="hbox">
+        <div class="col b-r bg-white">
+          <div class="vbox">
+            <div class="bg-light lt wrapper">
+                <div class="module-search bg-grey">
+                    <div class="module-search-input-area">
+                        <input type="text" class="module-search-input" placeholder="请输入关键词">
+                        <span class="module-search-icon-search fa fa-search"></span>
+                    </div>
+                    <span class="icon icon-close module-search-icon-clear hidden"></span>
+                </div>
+            </div>
+            <div class="row-row">
+                <div class="cell scrollable">
+                    <div class="cell-inner">
+                      <dl *ngFor="let contact of contacts" class="tongxunlu">
+                          <dt>{{contact.name | uppercase}}</dt>
+                          <dd *ngFor="let contactview of contact.data" id="{{contactview.cellphone}}" (click)="check(contactview)"
+                               class="clearfix">
+                              <span class="pull-right contacts-check" [class.contacts-checked]="contactview.ischeck" [class.contacts-checked-disabled]="contactview.disabled">
+                                <i class="fa fa-circle-thin"></i>
+                                <i class="fa fa-check-circle"></i>
+                                <i class="fa fa-check-circle text-success"></i>
+                              </span>
+                              <span class="tongxunlu-avatar">{{contactview.fullpinyin | slice:0:[2] | uppercase}}</span>
+                              <span class="tongxunlu-name">{{contactview.membername}}</span>
+                          </dd>
+                      </dl>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+            <div class="vbox">
+                <div class="row-row">
+                    <div class="cell scrollable hover">
+                        <div class="cell-inner">
+                            <div class="wrapper text-muted text-xs">已选择联系人</div>
+                            <dl class="tongxunlu no-border">
+                                <dd *ngFor="let contact of checkedContacts" class="clearfix">
+                                  <span class="pull-right" (click)="delContact(contact.cellphone)"><i class="icon-close"></i></span>
+                                  <span class="tongxunlu-avatar">{{contact.fullpinyin | slice:0:[2] | uppercase}}</span>
+                                  <span class="tongxunlu-name">{{contact.membername}}</span>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrapper text-center">
+                    <button (click)="cancelTribe($event)" class="btn m-b-xs w-xs btn-default m-r">取消</button>
+                    <button (click)="addMemberToTribe($event)" class="btn m-b-xs w-xs btn-primary">添加</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- /选择通讯录 -->

@@ -1,0 +1,299 @@
+/*薛*/
+li{
+	list-style: none;
+}
+.no-padding{
+	padding: 0 !important;
+}
+.color-aaa{
+	color: #aaa !important;
+}
+.color-40a7ff{
+	color: #40a7ff !important;
+}
+.color-ff4659{
+	color: #ff4659;
+}
+.color-ccc{
+	color: #ccc;
+}
+.b-c-40a7ff{
+	border-color: #40A7FF !important;
+}
+.display-block{
+	display: inline-block;
+}
+.border-ra100{
+	border-radius: 100%;
+}
+.font12{
+	font-size: 12px;
+}
+.ml100{
+	margin-left: 100px;
+}
+.width-50{
+	width: 50% !important;
+}
+.mt10{
+	margin-top: 10px;
+}
+.mb20{
+	margin-bottom: 20px;
+}
+.mt20{
+	margin-top: 20px;
+}
+.ml10{
+	margin-left: 10px;
+}
+.ml20{
+	margin-left: 20px;
+}
+.ml30{
+	margin-left: 30px;
+}
+.mt4{
+	margin-top: 4px;
+}
+.pt10{
+	padding-top: 10px;
+}
+.line-long{
+	position: relative;
+	height: 1px;
+	background: #cccccc;
+	margin: 10px 0;
+}
+.line-long span{
+	position: absolute;
+	left: 0;
+	top: -9px;
+	width: 66px;
+	background: #f9f9f9;
+}
+.font20{
+	font-size: 20px !important;
+}
+.overflow-sl{
+	text-overflow: ellipsis; 
+	overflow: hidden; 
+	white-space: nowrap;
+}
+.addBd{
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	border-radius: 100%;
+	color: #fff;
+	font-size: 20px;
+	text-align: center;
+	background: #ccc;
+	vertical-align: middle;
+	margin-top: 8px;
+}
+.width-100{
+	width: 100% !important;
+}
+.color-fc6767{
+	color: #fc6767;
+}
+.color-f3f3f3{
+	color: #f3f3f3;
+}
+.color-54d166{
+	color: #54d166;
+}
+.background-a4cc6d{
+	background: #a4cc6d;
+}
+.background-40a7ff{
+	background: #40A7FF;
+}
+.background-82b7cb{
+	background: #82b7cb;
+}
+.pb10{
+	padding-bottom: 10px;
+}
+.pt20{
+	padding-top: 20px;
+}
+.no-padder-l{
+	padding-left: 0;
+}
+.mt6{
+	margin-top: 6px;
+}
+.border{
+	border: 1px solid #f0f0f0;
+}
+.project_tab li{
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+	padding: 0 20px;
+	border-radius: 20px;
+}
+.project_tab li a{
+	display: block;
+	color: #888888;
+}
+.project_tab li.active{
+	background: #40A7FF;
+	color: #fff;
+}
+.project_tab li.active a{
+	color: #fff;
+}
+.project_list{
+	position: relative !important;
+}
+.project_list h4{
+	font-size: 14px;
+	width: 100%;
+}
+.project_list strong{
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.project_list strong img{
+	width: 30px;
+	height: 30px;
+}
+.position_ra{
+	position: relative;
+}
+.button{
+	padding: 1px 10px;
+	color: #cccccc;
+	font-size: 10px;
+	border-radius: 60px;
+	background: #f0f0f0;
+}
+.name_zx{
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	overflow: hidden;
+	color: #fff;
+	text-align: center;
+	line-height: 22px;
+	font-size: 10px;
+	vertical-align: middle;
+}
+.project_list i.detail_img{
+	right: 20px;
+}
+.project_list i.detail_img img{
+	width: 12px;
+	height: 16px;
+}
+.project_table tr{
+	height: 46px;
+	line-height: 46px;
+}
+.project_table tr label i{
+	top: 2px;
+}
+.zhixingren_add{
+	padding: 4px 12px;
+}
+.zhixingren_add b{
+	margin-right:10px;
+}
+.textarea{
+	width: 100%;
+	min-height: 200px;
+	resize: none;
+}
+.dropdown-menu.project_menu{
+	position: absolute;
+	right: -60px;
+	left: auto;
+	top: 30px;
+	width: 160px;
+	text-align: center;
+	z-index: 222;
+	border-radius: 5px;
+	padding-left: 0;
+	box-shadow: 0 0 10px #ccc;
+	background-color: #fff;
+}
+.project_menu li{
+	height: 40px;
+	line-height: 40px;
+}
+.guanzhu{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 30px;
+	height: 30px;
+}
+.add_zirenwu{
+	position: absolute;
+	right: 20px;
+	top: 10px;
+}
+
+
+.bg-gray{
+	background:#f3f3f3;
+}
+.color-333{
+	color: #333 !important;
+}
+.timeBd{
+	padding: 0 5px;
+	width:120px;
+	height: 30px;
+	line-height: 30px;
+	margin-left: 10px;
+	border-radius: 3px;
+	background: #fff;
+}
+.login_record{
+	padding: 20px 0;
+}
+.login_record li{
+	margin: 0 10px;
+	height: 45px;
+	line-height: 45px;
+	color: #888888;
+	border-bottom: 1px solid #f0f0f0;
+}
+.login_record li:last-child{
+	border-bottom: none;
+}
+.application_list li{
+	padding:20px;
+	margin-bottom: 20px;
+	background: #fff;
+}
+.application_list li div img{
+	width:40px;
+	height: 40px;
+	border-radius: 100%;
+}
+.application_list li div h3{
+	font-size: 14px;
+	margin-top: 0;
+}
+
+.btn-gray{
+	background: #d4d4d4;
+}
+.color-fff{
+	color: #fff !important;
+}
+.btn.yanzhengma{
+	position: absolute;
+	top: 32px;
+	right: 25px;
+	padding: 3px 8px;
+}
+.sure{
+	padding: 10px 12px;
+}

@@ -1,0 +1,49 @@
+<div class="wrapper-lg tab-hide active">
+  <div class="project">
+    <ul role="tablist" class="clearfix no-margin no-padding project_tab">
+      <li [class.active]="selectId === 0">
+        <a (click)="getProjectList(0)">所有项目</a>
+      </li>
+      <li [class.active]="selectId === 1">
+        <a (click)="getProjectList(1)">逾期项目</a>
+      </li>
+      <li [class.active]="selectId === 2">
+        <a (click)="getProjectList(2)">已关注项目</a>
+      </li>
+    </ul>
+    <div class=" tab-hide active">
+      <div class="mt20 mb20">目前共有<span class="color-40a7ff">{{projectTotal}}</span>个项目</div>
+      <ul class="no-padding clearfix row">
+        <li *ngFor="let project of projectList" class="col-lg-12">
+          <div class="bg-white list-group padder-md project_list">
+            <a [routerLink]="['../project-progress/', project.id]">
+              <div class="clearfix b-b padder-v ">
+                <h4 class="font-bold pull-left width-50">{{project.projectname}}</h4>
+                <div class="pull-right">
+                  待办<span class="color-40a7ff">{{project.todotask}}条</span>,&nbsp;&nbsp;已完成<span class="color-54d166">{{project.finishtask}}条</span>
+                </div>
+              </div>
+              <p class="color-aaa mt10 pb10">
+                <span>负责人&nbsp;&nbsp;|
+                  <span *ngFor="let leader of project.leaders">
+                    <img class="border-ra100 background-a4cc6d font-normal name_zx ml10" src="{{baseUrl}}{{leader.photo}}" alt="">
+                  </span>
+                  <!--<b  class="border-ra100 background-a4cc6d font-normal name_zx ml10">{{leader}}</b>-->
+                  <!--<b class="border-ra100 background-82b7cb font-normal name_zx ml10">艳萍</b>-->
+                </span>
+                <span class="m-l-lg">
+                  关注人&nbsp;&nbsp;|
+                   <span *ngFor="let leader of project.follow">
+                    <img class="border-ra100 background-a4cc6d font-normal name_zx ml10" src="{{baseUrl}}{{leader.photo}}" alt="">
+                  </span>
+                  <!--<b *ngFor="let follow of project.follow" class="border-ra100 background-82b7cb font-normal name_zx ml10">{{follow}}</b>-->
+                </span>
+                <span class="pull-right">成员&nbsp;&nbsp;|&nbsp;&nbsp;{{project.norm}}人</span></p>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,83 @@
+<div class="wrapper">
+    <div class="m-b">
+        <a class="btn btn-bg btn-primary" (click)="open(content)">
+            <i class="fa fa-plus text"></i>
+            <span class="text">添加子管理员</span>
+        </a>
+    </div>
+    <div class="panel panel-default no-border wrapper-md">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="no-bg">成员</th>
+                    <th class="no-bg">部门</th>
+                    <th class="no-bg w-xxs">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        王哈哈
+                    </td>
+                    <td>产品部</td>
+                    <td> <a href="#">删除</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        王哈哈
+                    </td>
+                    <td>产品部</td>
+                    <td> <a href="#">删除</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        王哈哈
+                    </td>
+                    <td>产品部</td>
+                    <td> <a href="#">删除</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        王哈哈
+                    </td>
+                    <td>产品部</td>
+                    <td> <a href="#">删除</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        王哈哈
+                    </td>
+                    <td>产品部</td>
+                    <td> <a href="#">删除</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title text-center text-base">设置子管理员</h4>
+
+    </div>
+    <!--<form>-->
+        <div class="modal-body">
+            <div class="form-group">
+                <div>成员</div>
+                <p-dropdown [options]="memberList" placeholder="请选择一个管理员" [(ngModel)]="member" name="member" [style]="{'width':'100%'}" filter="filter">
+                    <ng-template let-memberitem pTemplate="item">
+                        <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+                            <div>{{memberitem.label}}</div>
+                        </div>
+                    </ng-template>
+                </p-dropdown>
+            </div>
+        </div>
+        <div class="modal-footer" style="text-align:center;">
+            <button type="button" class="btn btn-secondary w-xs" (click)="c('Close click')">取消</button>
+            <button type="button" class="btn btn-primary w-xs" (click)="c('submit')">确定</button>
+        </div>
+    <!--</form>-->
+</ng-template>

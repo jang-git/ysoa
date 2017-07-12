@@ -1,0 +1,230 @@
+{
+    "uuid": "",
+    "status": 0,
+    "url": "",
+    "msg": "获取群聊天记录成功",
+    "data": {
+        "messages": {
+            "tribe_message": [
+                {
+                    "content": {
+                        "message_item": [
+                            {
+                                "type": "T",
+                                "value": "ok"
+                            },
+                            {
+                                "type": "Z",
+                                "value": "eyJleHREYXRhIjoiIn0="
+                            }
+                        ]
+                    },
+                    "from_id": {
+                        "app_key": "",
+                        "taobao_account": false,
+                        "uid": "13801234563"
+                    },
+                    "time": 1494559047,
+                    "type": 0,
+                    "uuid": 6269108628721484000
+                },
+                {
+                    "content": {
+                        "message_item": [
+                            {
+                                "type": "T",
+                                "value": "f"
+                            },
+                            {
+                                "type": "Z",
+                                "value": "eyJleHREYXRhIjoiIn0="
+                            }
+                        ]
+                    },
+                    "from_id": {
+                        "app_key": "",
+                        "taobao_account": false,
+                        "uid": "13801234563"
+                    },
+                    "time": 1494559038,
+                    "type": 0,
+                    "uuid": 6269108628720894000
+                },
+                {
+                    "content": {
+                        "message_item": [
+                            {
+                                "type": "T",
+                                "value": "这"
+                            },
+                            {
+                                "type": "Z",
+                                "value": "eyJleHREYXRhIjoiIn0="
+                            }
+                        ]
+                    },
+                    "from_id": {
+                        "app_key": "",
+                        "taobao_account": false,
+                        "uid": "13801234563"
+                    },
+                    "time": 1494558888,
+                    "type": 0,
+                    "uuid": 6269108628711064000
+                },
+                {
+                    "content": {
+                        "message_item": [
+                            {
+                                "type": "T",
+                                "value": "g"
+                            },
+                            {
+                                "type": "Z",
+                                "value": "eyJleHREYXRhIjoiIn0="
+                            }
+                        ]
+                    },
+                    "from_id": {
+                        "app_key": "",
+                        "taobao_account": false,
+                        "uid": "13801234563"
+                    },
+                    "time": 1494558626,
+                    "type": 0,
+                    "uuid": 6269108628693893000
+                },
+                {
+                    "content": {
+                        "message_item": [
+                            {
+                                "type": "T",
+                                "value": "o"
+                            },
+                            {
+                                "type": "Z",
+                                "value": "eyJleHREYXRhIjoiIn0="
+                            }
+                        ]
+                    },
+                    "from_id": {
+                        "app_key": "",
+                        "taobao_account": false,
+                        "uid": "13801234563"
+                    },
+                    "time": 1494558295,
+                    "type": 0,
+                    "uuid": 6269108628671939000
+                },
+                {
+                    "content": {
+                        "message_item": [
+                            {
+                                "type": "T",
+                                "value": "q"
+                            },
+                            {
+                                "type": "Z",
+                                "value": "eyJleHREYXRhIjoiIn0="
+                            }
+                        ]
+                    },
+                    "from_id": {
+                        "app_key": "",
+                        "taobao_account": false,
+                        "uid": "13801234563"
+                    },
+                    "time": 1494558151,
+                    "type": 0,
+                    "uuid": 6269108628662698000
+                },
+                {
+                    "content": {
+                        "message_item": [
+                            {
+                                "type": "T",
+                                "value": "测试"
+                            },
+                            {
+                                "type": "Z",
+                                "value": "eyJleHREYXRhIjoiIn0="
+                            }
+                        ]
+                    },
+                    "from_id": {
+                        "app_key": "",
+                        "taobao_account": false,
+                        "uid": "13801234563"
+                    },
+                    "time": 1494557952,
+                    "type": 0,
+                    "uuid": 6269108628649722000
+                },
+                {
+                    "content": {
+                        "message_item": [
+                            {
+                                "type": "T",
+                                "value": "讨论组"
+                            },
+                            {
+                                "type": "Z",
+                                "value": "eyJleHREYXRhIjoiIn0="
+                            }
+                        ]
+                    },
+                    "from_id": {
+                        "app_key": "",
+                        "taobao_account": false,
+                        "uid": "13801234563"
+                    },
+                    "time": 1494557460,
+                    "type": 0,
+                    "uuid": 6269108628617413000
+                },
+                {
+                    "content": {
+                        "message_item": [
+                            {
+                                "type": "T",
+                                "value": "无聊啊"
+                            },
+                            {
+                                "type": "Z",
+                                "value": "eyJleHREYXRhIjoiIn0="
+                            }
+                        ]
+                    },
+                    "from_id": {
+                        "app_key": "",
+                        "taobao_account": false,
+                        "uid": "13801234561"
+                    },
+                    "time": 1494555103,
+                    "type": 0,
+                    "uuid": 6269108628462979000
+                },
+                {
+                    "content": {
+                        "message_item": [
+                            {
+                                "type": "T",
+                                "value": "看看"
+                            }
+                        ]
+                    },
+                    "from_id": {
+                        "app_key": "",
+                        "taobao_account": false,
+                        "uid": "13801234569"
+                    },
+                    "time": 1494554733,
+                    "type": 0,
+                    "uuid": 6269108628438712000
+                }
+            ]
+        },
+        "next_key": "h2EAAAAAg9U+Kabq61JXAFkVFK0AAAF4"
+    },
+    "bound_url": ""
+}

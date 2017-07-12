@@ -1,0 +1,14 @@
+<div class="wrapper-lg tab-hide active">
+	<ul class="no-padding clearfix row application_list">
+		<li *ngFor="let item of appliactionList" class="clearfix">
+			<div class="pull-left">
+				<img src="{{baseUrl}}{{item.icon}}">
+			</div>
+			<div class="pull-left m-l">
+				<h3>{{item.name}}</h3>
+				<p class="color-aaa no-margin">{{item.desc}}</p>
+			</div>
+			<a (click)="openApp(item.id)" class="btn m-b-xs btn-default pull-right mt6 color-40a7ff b-c-40a7ff">启用</a>
+		</li>
+	</ul>
+</div>

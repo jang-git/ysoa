@@ -1,0 +1,53 @@
+<div class="app-content">
+  <div class="app-content-body app-content-full fade-in-up ng-scope h-full">
+    <div class="hbox hbox-auto-xs">
+      <!-- left col -->
+      <div class="col w-lg lt b-r">
+        <div class="vbox">
+          <div class="wrapper b-b pc-50">
+            <div class="text-center padder-md">
+              企业管理
+            </div>
+          </div>
+
+          <div class="row-row">
+            <div class="cell scrollable">
+              <div class="cell-inner">
+                <div class="tongxunlu">
+                  <div class="list-group no-radius no-border">
+                    <a class="list-group-item no-border" routerLink="application" routerLinkActive="hover">
+                        <span class="thumb-sm m-r-xs"><img src="assets/images/icon-yy.png" alt=""></span>
+                        应用
+                    </a>
+                    <a class="list-group-item" routerLink="syslog" routerLinkActive="hover">
+                        <span class="thumb-sm m-r-xs"><img src="assets/images/icon-xtrz.png" alt=""></span>
+                        系统日志
+                    </a>
+                    <a class="list-group-item" routerLink="contactset" routerLinkActive="hover">
+                        <span class="thumb-sm m-r-xs"><img src="assets/images/icon-txlsz.png" alt=""></span>
+                        通讯录设置
+                    </a>
+                    <a class="list-group-item" routerLink="setting" routerLinkActive="hover">
+                        <span class="thumb-sm m-r-xs"><img src="assets/images/icon-shezhi.png" alt=""></span>
+                        设置
+                    </a>
+                    
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / left col -->
+      <!-- main -->
+      <div class="col">
+          <router-outlet></router-outlet>
+      </div>
+      <!-- / main -->
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<style media="screen">
+  .badge.up {
+    position: absolute;
+    right: -5px;
+    top: -5px;
+}
+</style>
+<a (click)="readMsg(thread)" [routerLink]="['/chat/',thread.uid,thread.nickname,thread.threadType]" class="list-group-item hover-anchor hover clearfix" routerLinkActive="active-tongxunlu">
+  <!--<span class="pc-delbtn text-muted hover-action"><i class="fa fa-times"></i></span>-->
+  <div class="avatar thumb pull-left m-r-xs">
+      <span *ngIf="thread.threadUnread" class="badge badge-sm up bg-danger">{{thread.threadUnread}}</span>
+      <img src="{{thread.avator}}" style="height:40px;width:40px;">
+  </div>
+  <div class="pull-right text-sm text-muted">
+      <span class="">{{thread.time | date:"MM-dd HH:mm"}}</span>
+  </div>
+  <div class="clear">
+      <div class="text-base">{{thread.nickname}}</div>
+      <div class="text-ellipsis m-t-xs text-xs">{{thread.msg}}</div>
+  </div>
+</a>

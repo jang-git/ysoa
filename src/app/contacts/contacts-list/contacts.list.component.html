@@ -1,0 +1,207 @@
+<!-- content -->
+<div id="content" class="app-content">
+    <div class="app-content-body app-content-full fade-in-up ng-scope h-full">
+        <div class="hbox hbox-auto-xs">
+            <!-- left col -->
+            <div class="col w-lg lt b-r">
+                <div class="vbox">
+
+                    <div class="padder b-b pc-50">
+                        <ul class="tongxunlu-tabs">
+                            <li class="active">
+                                <a routerLink="/contacts/list">全部</a>
+                            </li>
+                            <li class="">
+                                <a routerLink="/contacts/group">分组</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <div class="bg-light lt wrapper">
+                        <div class="module-search" (click)="searchFocus()" [class.isfocus]="isFocus">
+                            <div class="module-search-input-area">
+                                <input [(ngModel)]="searchText" id="searchText" name="searchText" (blur)="delFocus()" (keyup)="searchChanged($event)" (change)="searchChanged($event)"
+                                    type="text" class="module-search-input" placeholder="请输入关键词">
+                                <span class="module-search-icon-search fa fa-search"></span>
+                            </div>
+                            <span class="icon icon-close module-search-icon-clear hidden"></span>
+                        </div>
+                    </div>
+                    <div class="row-row">
+                        <div class="cell scrollable">
+                            <div class="cell-inner">
+                                <div *ngIf="!isSearching" class="">
+                                    <!-- <dl class="tongxunlu">
+                                          <dd *ngFor="let contact of contacts" (click)="onSelect(contact)"
+                                              [class.selected]="contact === selectedContacts">
+                                              <span class="tongxunlu-label pull-right">{{contact.membergroup}}</span>
+                                              <span class="tongxunlu-avatar">{{contact.fullpinyin | uppercase}}</span>
+                                              <span class="tongxunlu-name">{{contact.membername}}</span>
+                                          </dd>
+                                        </dl> -->
+
+                                    <!--<dl *ngFor="let contact of contacts" class="tongxunlu">
+                                        <dt>{{contact.name | uppercase}}</dt>
+                                        <dd *ngFor="let contactview of contact.data" (click)="onSelect(contactview)" [class.selected]="contact === selectedContacts"
+                                            class="clearfix">
+                                            <span class="tongxunlu-label pull-right">{{contactview.department.name}}</span>
+                                            <span class="tongxunlu-avatar">{{contactview.fullpinyin | slice:0:[2] | uppercase}}</span>
+                                            <span class="tongxunlu-name">{{contactview.membername}}</span>
+                                        </dd>
+                                    </dl>-->
+
+                                    <dl *ngFor="let contact of contacts" class="tongxunlu">
+                                        <dt>{{contact.title | uppercase}}</dt>
+                                        <dd *ngFor="let contactview of contact.list" (click)="onSelect(contactview)" [class.selected]="contact === selectedContacts"
+                                            class="clearfix">
+                                            <span class="tongxunlu-label pull-right">{{contactview.depardepartmentName}}</span>
+                                            <img *ngIf="contactview.imgSrc != ''" class="tongxunlu-avatar" src="{{contactview.imgSrc}}" >
+                                            <span *ngIf="contactview.imgSrc == ''" class="tongxunlu-avatar">{{contactview.firstchar}}</span>
+                                            <span class="tongxunlu-name">{{contactview.name}}</span>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div *ngIf="isSearching" class="">
+                                    <dl class="tongxunlu">
+                                        <dd *ngFor="let contactview of searchContact" (click)="onSelect(contactview)" [class.selected]="contact === selectedContacts"
+                                            class="clearfix">
+                                            <span class="tongxunlu-label pull-right">{{contactview.depardepartmentName}}</span>
+                                            <img *ngIf="contactview.imgSrc != ''" class="tongxunlu-avatar" src="{{contactview.imgSrc}}" >
+                                            <span *ngIf="contactview.imgSrc == ''" class="tongxunlu-avatar">{{contactview.firstchar}}</span>
+                                            <span class="tongxunlu-name">{{contactview.name}}</span>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- / left col -->
+            <!-- main -->
+            <div class="col">
+                <div class="vbox">
+                    <div class="row-row">
+                        <div class="cell bg-light lt b-b">
+                            <div class="cell-inner">
+                                <div *ngIf="selectedContacts" class="panel no-radius no-border no-shadow no-bg wrapper">
+                                    <div class="panel-heading no-border wrapper-lg">
+                                        <!--<button class="btn btn-sm btn-icon btn-rounded pull-right m-r"><i class="fa fa-heart"></i></button>-->
+                                    </div>
+                                    <div class="text-center m-b clearfix">
+                                        <div class="thumb-lg avatar">
+                                            <img src="{{ selectedContacts.imgSrc }}" style="width:96px; height:96px;" class="b b-3x b-white">
+                                            <div class="h4 m-t">{{selectedContacts.name}}</div>
+                                            <div class="h5 font-thin m-t-sm">{{selectedContacts.department}}</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <div class="to-talk">
+                                            <a [routerLink]="['/chat/',selectedContacts.telphone,selectedContacts.name,1]" class="btn btn-primary btn-block"><i class="fa fa-weixin m-r-xs"></i>聊天</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="panel no-border text-center bg-white wrapper">
+                                        <span class="user-info-tag active">资料</span>
+
+                                    </div>
+
+                                    <div class="pc-user-info">
+
+                                        <!--<div *ngFor='let key of _.keys(selectedContacts.labelList)'>{{key}}: demo[key]</div>-->
+                                        <div *ngFor="let item of selectedContacts.labelList | keys" class="pc-user-info-item-3">
+                                            <div class="pc-user-info-item">
+                                                <span class="pc-user-info-label">{{item.key}}</span>
+                                                <span class="clear">{{item.value}}</span>
+                                            </div>
+                                        </div>
+                                        <!--<div class="pc-user-info-item-3">
+                                            <div class="pc-user-info-tit">个人信息</div>
+                                            <div class="pc-user-info-item">
+                                                <span class="pc-user-info-label">姓名</span>
+                                                <span class="clear">安娜</span>
+                                            </div>
+                                            <div class="pc-user-info-item">
+                                                <span class="pc-user-info-label">性别</span>
+                                                <span class="clear">女</span>
+                                            </div>
+                                            <div class="pc-user-info-item">
+                                                <span class="pc-user-info-label">出生日期</span>
+                                                <span class="clear">安娜</span>
+                                            </div>
+                                            <div class="pc-user-info-item">
+                                                <span class="pc-user-info-label">家乡</span>
+                                                <span class="clear">河北 张家口</span>
+                                            </div>
+                                            <div class="pc-user-info-item">
+                                                <span class="pc-user-info-label">居住地</span>
+                                                <span class="clear">北京 朝阳</span>
+                                            </div>
+                                            <div class="pc-user-info-item">
+                                                <span class="pc-user-info-label">星座</span>
+                                                <span class="clear">狮子座</span>
+                                            </div>
+                                            <div class="pc-user-info-item">
+                                                <span class="pc-user-info-label">爱好</span>
+                                                <span class="clear">{{selectedContacts.likeMatch}}</span>
+                                            </div>
+                                            <div class="pc-user-info-item">
+                                                <span class="pc-user-info-label">介绍</span>
+                                                <span class="clear">此处是内容介绍</span>
+                                            </div>
+                                        </div>
+                                        <div class="pc-user-info-item-3">
+                                            <div class="pc-user-info-tit">公司信息</div>
+                                            <div class="pc-user-info-item">
+                                                <span class="pc-user-info-label">部门</span>
+                                                <span class="clear">产品部</span>
+                                            </div>
+                                            <div class="pc-user-info-item">
+                                                <span class="pc-user-info-label">职位</span>
+                                                <span class="clear">UI设计师</span>
+                                            </div>
+                                            <div class="pc-user-info-item">
+                                                <span class="pc-user-info-label">工号</span>
+                                                <span class="clear">1993234</span>
+                                            </div>
+                                            <div class="pc-user-info-item">
+                                                <span class="pc-user-info-label">入职日期</span>
+                                                <span class="clear">2016-02-02</span>
+                                            </div>
+
+                                        </div>
+                                        <div class="pc-user-info-item-3">
+                                            <div class="pc-user-info-tit">联系方式</div>
+                                            <div class="pc-user-info-item">
+                                                <span class="pc-user-info-label">手机</span>
+                                                <span class="clear">{{selectedContacts.cellphone}}</span>
+                                            </div>
+                                            <div class="pc-user-info-item">
+                                                <span class="pc-user-info-label">邮件</span>
+                                                <span class="clear">{{selectedContacts.email}}</span>
+                                            </div>
+                                            <div class="pc-user-info-item">
+                                                <span class="pc-user-info-label">微信</span>
+                                                <span class="clear">{{selectedContacts.wechat}}</span>
+                                            </div>
+                                            <div class="pc-user-info-item">
+                                                <span class="pc-user-info-label">QQ</span>
+                                                <span class="clear">{{selectedContacts.qq}}</span>
+                                            </div>
+
+                                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- / main -->
+        </div>
+
+    </div>
+</div>
+<!-- /content -->

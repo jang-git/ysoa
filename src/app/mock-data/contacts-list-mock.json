@@ -1,0 +1,33 @@
+{
+    "uuid": "",
+    "status": 0,
+    "url": "",
+    "msg": "操作成功",
+    "data": [
+        {
+            "letter": "#",
+            "fullpinyin": "zs",
+            "firstfullpinyin": "an",
+            "headPortrait": "",
+            "membername": "张三",
+            "membergroup": "程序开发"
+        },
+        {
+            "letter": "#",
+            "fullpinyin": "ls",
+            "firstfullpinyin": "an",
+            "headPortrait": "",
+            "membername": "李四",
+            "membergroup": "产品经理"
+        },
+        {
+            "letter": "#",
+            "fullpinyin": "ww",
+            "firstfullpinyin": "an",
+            "headPortrait": "",
+            "membername": "王五",
+            "membergroup": "销售顾问"
+        }
+    ],
+    "bound_url": ""
+}
